@@ -12,6 +12,7 @@ contract SimpleStorage {
     // This runs ONCE, when the contract is deployed
     constructor() {
         owner = msg.sender;
+        
     }
 
     // 3. Modifier (The Check)
