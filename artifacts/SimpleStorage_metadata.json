@@ -1,0 +1,108 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "retrieveNumber",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_newNumber",
+						"type": "uint256"
+					}
+				],
+				"name": "storeNumber",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"retrieveNumber()": {
+					"returns": {
+						"_0": "The currently stored number"
+					}
+				},
+				"storeNumber(uint256)": {
+					"params": {
+						"_newNumber": "The number to store"
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"retrieveNumber()": {
+					"notice": "Retrieves the stored number."
+				},
+				"storeNumber(uint256)": {
+					"notice": "Stores a new number, but only the owner can call it."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/test.sol": "SimpleStorage"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/test.sol": {
+			"keccak256": "0x62b279b29537c497129e2ff06f02fa320b132187b4b879ec19da55e553b92542",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e1d6283b7c678b2ddc2c694f6af4f4cd06e36e5015475e231ff901860ee2ccaf",
+				"dweb:/ipfs/QmUuL72dtwJcoySHTK7XVew3ytYCXfXr3kccxdLRq2m8Uk"
+			]
+		}
+	},
+	"version": 1
+}
