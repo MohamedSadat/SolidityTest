@@ -5,15 +5,14 @@ pragma solidity ^0.8.20;
 contract VotingSystem {
 
     // 1. State Variables (The Data)
-    uint256 private favoriteNumber;
+
     uint256 private candidate1;
     uint256 private candidate2;
     uint256 private candidate3;
 
     address public owner;
 
-    // 2. Constructor (The Initializer)
-    // This runs ONCE, when the contract is deployed
+ event Voted(address indexed voter);
     constructor() {
         owner = msg.sender;
         
@@ -36,14 +35,17 @@ contract VotingSystem {
         function voteFirst() public
          {
         candidate1++;
+        emit Voted(msg.sender);
          }
     function voteSecond() public
          {
         candidate2++;
+         emit Voted(msg.sender);
          }
          function voteThird() public
          {
         candidate3++;
+         emit Voted(msg.sender);
          }
          
     /**
