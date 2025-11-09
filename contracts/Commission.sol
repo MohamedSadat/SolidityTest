@@ -12,14 +12,12 @@ contract ComContract is ERC20, Ownable,ReentrancyGuard
  
     mapping(address=>uint)public balances;
 mapping(address => bool) private _blacklist;
-  mapping(address => uint256) public avaxBalances;
+  mapping(address => uint256) public nativeBalances;
 
    uint256 public transferFeePercent = 1; // 1%
     address public feeCollector;
 
 event FallbackCalled(address sender, uint amount, bytes data);
-event Deposit(address indexed sender, uint amount);
-event Withdraw(address indexed sender, uint amount);
 event BlacklistUpdated(address indexed account, bool blacklisted);
 
     event NativeDeposited(address indexed user, uint256 amount);
@@ -36,19 +34,19 @@ fallback() external payable {
 
    // Handles plain Ether transfers (like bank deposits)
     receive() external payable {
-        avaxBalances[msg.sender] += msg.value;
+        nativeBalances[msg.sender] += msg.value;
        emit NativeDeposited(msg.sender, msg.value);
 
     }
   function depositNative() public payable {
         require(msg.value > 0, "Must send AVAX");
-        avaxBalances[msg.sender] += msg.value;
+        nativeBalances[msg.sender] += msg.value;
         emit NativeDeposited(msg.sender, msg.value);
     }
      // ✅ ADD THIS: Withdraw received AVAX
          function withdrawNative(uint256 amount) public nonReentrant {
-        require(avaxBalances[msg.sender] >= amount, "Insufficient balance");
-        avaxBalances[msg.sender] -= amount;
+        require(nativeBalances[msg.sender] >= amount, "Insufficient balance");
+        nativeBalances[msg.sender] -= amount;
         
         (bool success, ) = payable(msg.sender).call{value: amount}("");
         require(success, "Transfer failed");
@@ -73,7 +71,7 @@ fallback() external payable {
         IERC20(token).transfer(msg.sender, amount);
         emit TokenWithdrawn(msg.sender, token, amount);
     }
-constructor(uint256 initialSupply)   ERC20("CashGear Token", "CGE")
+constructor(uint256 initialSupply)   ERC20("OCTA Token", "OCT")
         Ownable(msg.sender) // Initialize owner
         {
           _mint(msg.sender,initialSupply * 10 ** decimals());
@@ -87,7 +85,7 @@ constructor(uint256 initialSupply)   ERC20("CashGear Token", "CGE")
     }
 
     function burn(uint256 amount) public {
-        _burn(msg.sender, amount);
+        _burn(msg.sender, amount * 10 ** decimals());
      
     }
 
