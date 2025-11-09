@@ -8,6 +8,8 @@ import {ERC721URIStorage} from "@openzeppelin/contracts/token/ERC721/extensions/
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
 contract CGVoucher is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
+    uint256 private _nextTokenId;
+
     constructor(address initialOwner)
         ERC721("CG Voucher", "VCH")
         Ownable(initialOwner)
@@ -17,12 +19,15 @@ contract CGVoucher is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
         return "https://cashgearstorage.blob.core.windows.net/resources/ERC721/Voucher";
     }
 
-    function safeMint(address to, uint256 tokenId, string memory uri)
+    function safeMint(address to, string memory uri)
         public
         onlyOwner
+        returns (uint256)
     {
+        uint256 tokenId = _nextTokenId++;
         _safeMint(to, tokenId);
         _setTokenURI(tokenId, uri);
+        return tokenId;
     }
 
     // The following functions are overrides required by Solidity.
