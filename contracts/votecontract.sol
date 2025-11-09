@@ -4,18 +4,18 @@ pragma solidity ^0.8.20;
 // This is the contract declaration, similar to a 'class'
 contract VotingSystem {
 
-    // 1. State Variables (The Data)
 
     uint256 private candidate1;
     uint256 private candidate2;
     uint256 private candidate3;
 
     address public owner;
+bool public votingOpen;
 
  event Voted(address indexed voter);
     constructor() {
         owner = msg.sender;
-        
+            votingOpen = true;
     }
 
     // 3. Modifier (The Check)

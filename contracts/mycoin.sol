@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.20;
 
 // Import ERC20 standard from OpenZeppelin
@@ -16,7 +16,7 @@ contract CashGearToken is ERC20, Ownable {
         Ownable(msg.sender) // Initialize owner
     {
         // Mint the initial supply to the deployer
-        _mint(msg.sender, initialSupply * 10 ** decimals());
+        _mint(msg.sender,initialSupply * 10 ** decimals());
     }
 
     /// @notice Mint new tokens (only owner)
