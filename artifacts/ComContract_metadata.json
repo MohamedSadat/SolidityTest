@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.30+commit.73712a01"
+		"version": "0.8.24+commit.e11b9ed9"
 	},
 	"language": "Solidity",
 	"output": {
@@ -130,44 +130,6 @@
 					{
 						"indexed": true,
 						"internalType": "address",
-						"name": "user",
-						"type": "address"
-					},
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
-				"name": "AVAXDeposited",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "user",
-						"type": "address"
-					},
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
-				"name": "AVAXWithdrawn",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"internalType": "address",
 						"name": "owner",
 						"type": "address"
 					},
@@ -210,25 +172,6 @@
 				"anonymous": false,
 				"inputs": [
 					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "sender",
-						"type": "address"
-					},
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
-				"name": "Deposit",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
 						"indexed": false,
 						"internalType": "address",
 						"name": "sender",
@@ -256,7 +199,7 @@
 					{
 						"indexed": true,
 						"internalType": "address",
-						"name": "sender",
+						"name": "user",
 						"type": "address"
 					},
 					{
@@ -266,7 +209,26 @@
 						"type": "uint256"
 					}
 				],
-				"name": "MoneySent",
+				"name": "NativeDeposited",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "NativeWithdrawn",
 				"type": "event"
 			},
 			{
@@ -364,25 +326,6 @@
 				"type": "event"
 			},
 			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "sender",
-						"type": "address"
-					},
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
-				"name": "Withdraw",
-				"type": "event"
-			},
-			{
 				"stateMutability": "payable",
 				"type": "fallback"
 			},
@@ -464,25 +407,6 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"name": "avaxBalances",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
 						"name": "account",
 						"type": "address"
 					}
@@ -545,7 +469,7 @@
 			},
 			{
 				"inputs": [],
-				"name": "depositAVAX",
+				"name": "depositNative",
 				"outputs": [],
 				"stateMutability": "payable",
 				"type": "function"
@@ -626,6 +550,25 @@
 						"internalType": "string",
 						"name": "",
 						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "nativeBalances",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -840,7 +783,7 @@
 						"type": "uint256"
 					}
 				],
-				"name": "withdrawAVAX",
+				"name": "withdrawNative",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -992,7 +935,7 @@
 		"compilationTarget": {
 			"contracts/Commission.sol": "ComContract"
 		},
-		"evmVersion": "prague",
+		"evmVersion": "cancun",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -1061,11 +1004,11 @@
 			]
 		},
 		"contracts/Commission.sol": {
-			"keccak256": "0xdbb0efaa35f0d8c29d58f60fea7e79138d33525399e1b45c637a0e6aff894a08",
+			"keccak256": "0x4dada0a2bc7da83d56371458cbd7d245c3cb56a3f49090c3d425910417bd7513",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://d18056c1ffe2ad6ad1b4d436171391cb967ec24096335dafb83a770d26efdc1d",
-				"dweb:/ipfs/QmYFU6sjFLWtW5QmeKSCuwpfPh6TUcUaKRspm5tpTbNwkh"
+				"bzz-raw://c7298c2c371d20276f5516f678e9d279f6211a203a5ada9c229ae9d5be46cd0b",
+				"dweb:/ipfs/Qmdu872LuEtFhXQWqYcqydNN12aYYtj3JQJ94sq1UNYT7X"
 			]
 		}
 	},
